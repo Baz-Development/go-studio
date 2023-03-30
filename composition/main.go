@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 func main() {
 
@@ -25,6 +28,9 @@ func main() {
 	}
 
 
-
-	fmt.Printf("Pacman: %+v\n", pacman)
+	our, err := json.MarshalIndent(pacman, "", "\t")
+	if err != nil {
+		return 
+	}
+	fmt.Printf("Pacman: %s\n", string(our))
 }
